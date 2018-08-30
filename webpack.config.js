@@ -1,5 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
   entry: {
@@ -8,7 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     // filename: '[name].[chunkhash].js',   // for production
-    filename: 'main.js',
+    filename: 'main.js',                 // for dev
   },
   module: {
     rules: [
@@ -30,15 +31,27 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin('dist', {} ),
+    // for dev
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
+
     // for production
+    // new CleanWebpackPlugin('dist', {} ),
     // new MiniCssExtractPlugin({
-    //   filename: 'style.[chunkhash].css',
+    //   filename: '[name].[chunkhash].css',
+    //   chunkFilename: '[id].[chunkhash].css',
     //   disable: false,
     //   allChunks: true,
     // }),
-    new MiniCssExtractPlugin({
-      filename: 'style.css',
-    }),
+    // new OptimizeCSSAssetsPlugin({
+    //   cssProcessor: require('cssnano'),
+    //   cssProcessorOptions: {
+    //     preset: ['default', { discardComments: { removeAll: false } }],
+    //     map: {inline: false},
+    //     sourcemap: true,
+    //   },
+    // }),
   ]
 };

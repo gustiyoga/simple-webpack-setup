@@ -1,12 +1,19 @@
+/*!
+ * this comment will not removed
+ *
+ */
+
+ // this comment will removed
+
 body {
-    background-color: black;
+    background-color: #ff;
     color: white;
 }
 button {
     background-color: red;
     border-radius: 25px;
+    transform: all 1s linear;
 }
-button {
-    background-color: red;
-    border-radius: 25px;
+::placeholder {
+    color: gray;
 }
