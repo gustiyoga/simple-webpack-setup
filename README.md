@@ -1,1 +1,1 @@
-# simple-webpack4-with-scss-config
+# Simple Webpack 4 Setup
