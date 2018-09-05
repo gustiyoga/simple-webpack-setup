@@ -26,15 +26,21 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-            options: true,
+            options: {
+              sourceMap: true,
+            },
           },
           {
             loader: 'postcss-loader',
-            options: 'inline',
+            options: {
+              sourceMap: 'inline',
+            },
           },
           {
             loader: 'sass-loader',
-            options: true,
+            options: {
+              sourceMap: true,
+            },
           },
         ]
       },
